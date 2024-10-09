@@ -87,6 +87,10 @@ struct LineTestcase : public Testcase {
                 auto g_it = std::find_if(got.begin(), got.end(), [&e](const Pixel& p) {
                     return p.x == e.x;
                 }); 
+                if (g_it == got.end()) {
+                    err_cnt++;
+                    continue;
+                }
                 auto& g = *g_it;
                 if (g.y != e.y) {
                     err_cnt++;
@@ -96,7 +100,11 @@ struct LineTestcase : public Testcase {
             for (auto& e : expected) {
                 auto g_it = std::find_if(got.begin(), got.end(), [&e](const Pixel& p) {
                     return p.y == e.y;
-                }); 
+                });
+                if (g_it == got.end()) {
+                    err_cnt++;
+                    continue;
+                } 
                 auto& g = *g_it;
                 if (g.x != e.x) {
                     err_cnt++;
