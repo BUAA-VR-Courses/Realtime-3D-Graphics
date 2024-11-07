@@ -47,7 +47,7 @@ matf4 rotate_with(float theta, const vecf3& axis) noexcept {
     assert(abs(axis.dot(axis) - 1.0f) < 1e-6);
 
 	// TODO 2.1.1 : Create the rotation matrix with the given theta and axis.
-    // Note that the parameter 'theta' is expressed in the angle system.
+    // Note that the parameter 'theta' is expressed in the radian system.
 	matf4 m = matf4::Identity();
 
     return m;

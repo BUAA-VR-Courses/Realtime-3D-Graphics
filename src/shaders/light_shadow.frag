@@ -36,7 +36,7 @@ void main() {
 
 	vec4 fragPosLightSpace = light_space_matrix * vec4(vs_out.WorldPos, 1.0);
 
-	// TODO 2.2.1 : Complete the following shadow mapping calculations
+	// TODO 2.2.2 : Complete the following shadow mapping calculations
 
 
 	float shadow = 0.0;
