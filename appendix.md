@@ -275,7 +275,7 @@ bool Sphere::hit(const Ray& r, Interval ray_t, Record& rec) const {
 
 对角可以表示为 $\mathbf{Q} + \mathbf{u} + \mathbf{v}$（其实是个平行四边形）。
 
-![](./resources/quad.jpg)
+<img src="./resources/quad.jpg" style="zoom: 33%;" />
 
 对于光线和四边形的求交，我们可以先求出四边形所在平面和光线的交点，然后判断交点是否在四边形内部。
 
@@ -313,7 +313,7 @@ $$ \mathbf{w} = \frac{\mathbf{n}}{\mathbf{n} \cdot \mathbf{n}} = \frac{\mathbf{n
 $$ \alpha = \mathbf{w} \cdot (\mathbf{p} \times \mathbf{v}) $$
 $$ \beta  = \mathbf{w} \cdot (\mathbf{u} \times \mathbf{p}) $$
 
-![](./resources/quad_uv.jpg)
+<img src="./resources/quad_uv.jpg" style="zoom: 33%;" />
 
 最后通过判断$\alpha$和$\beta$是否在$[0, 1]$之间，我们可以判断交点是否在四边形内部。
 
@@ -420,19 +420,19 @@ bool Sphere::hit(const Ray& r, Interval ray_t, Record& rec) const {
 
 AABB（Axis-Aligned Bounding Box，轴对齐包围盒）是一种包围盒，它的六个面都与坐标轴平行。在轴对齐的情况下，与光线的求交如下图所示：
 
-![](./resources/aabb.png)
+<img src="./resources/aabb.png" style="zoom: 25%;" />
 
 对任意平面，我们求交需要3次减法、6次乘法和1次除法：
 
 $$ t = \frac{(p - o)\cdot N}{d} $$
 
-![](./resources/axis_align_1.png)
+<img src="./resources/axis_align_1.png" style="zoom: 33%;" />
 
 而对轴对齐的某对平面，我们只需要1次减法和1次除法：
 
 $$ t = \frac{p - o}{d} $$
 
-![](./resources/axis_align_2.png)
+<img src="./resources/axis_align_2.png" style="zoom:33%;" />
 
 在已经提供的代码中，每个继承了`Hittable`类的求交体都有一个AABB成员，用于实现`bounding_box()`函数。AABB成员在构造函数中初始化。值得一提的是，我们可以很容易地将多个AABB合并为一个更大的AABB，取所有AABB每个轴的最小值和最大值即可。
 
@@ -442,7 +442,7 @@ $$ t = \frac{p - o}{d} $$
 
 本次作业中采用的方法是BVH（Bounding Volume Hierarchy，包围体层次结构）。BVH是一种二叉树结构，每个节点都有一个AABB。可以将实际的物体看作叶结点，射线与BVH结点最终是否相交的判断会递归的向下进行，直到叶结点。
 
-![](./resources/bvh.png)
+<img src="./resources/bvh.png" style="zoom:67%;" />
 
 判断光线与BVH树的求交过程如下（`hit.cpp` 4.3）：
 
@@ -461,7 +461,7 @@ bool BVHNode::hit(const Ray& r, Interval ray_t, Record& rec) const {
 }
 ```
 
-![](./resources/bvh_hit.png)
+<img src="./resources/bvh_hit.png" style="zoom:67%;" />
 
 
 ### 参考资料
