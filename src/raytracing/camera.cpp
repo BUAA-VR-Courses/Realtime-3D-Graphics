@@ -12,8 +12,12 @@ vecf3 Camera::ray_color(const Ray& r, int depth, const Hittable& world) const {
 
     Record rec;
 
-    // TODO: 4.1 Get the color from scattered or emitted rays
-    return vecf3(0, 0, 0);
+    if (!world.hit(r, Interval(0.001, infinity), rec)) {
+        return background;
+    }
+
+    // TODO: 4.2 Get the color from scattered or emitted rays
+    return background;
 }
 
 }

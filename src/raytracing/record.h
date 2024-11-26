@@ -12,13 +12,12 @@ class Material;
 
 class Record {
 public:
-    vecf3 p;
-    vecf3 normal;
+    vecf3 p;            // Hit point
+    vecf3 normal;       // Normal vector
     std::shared_ptr<Material> mat;
 
-    double t;
-    double u;
-    double v;
+    double t;           // Ray's t parameter
+    double u, v;        // Texture's u,v
     bool front_face;
 
     void set_face_normal(const Ray& r, const vecf3& outward_normal) {

@@ -165,8 +165,7 @@ private:
 class Translate : public Hittable {
 public:
     Translate(std::shared_ptr<Hittable> object, const vecf3& offset)
-      : object(object), offset(offset)
-    {
+      : object(object), offset(offset) {
         bbox = object->bounding_box() + offset;
     }
 
